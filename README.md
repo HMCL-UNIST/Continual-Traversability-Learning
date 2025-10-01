@@ -20,6 +20,17 @@ This repository implements:
 - A continual learning pipeline for traversability prediction that adapts across environments.
 - An off-road navigation stack that utilizes the learned traversability model.
 - Terrain Feature recording and processing nodes.
+
+## System Setup
+
+- 🖥️ **Hardware**: NVIDIA Jetson AGX Orin Developer Kit  
+- 📦 **JetPack**: 6.1 — L4T 36.4.0 — CUDA 12.6  
+- 🔬 **Frameworks**:  
+  - PyTorch 2.5.0  
+  - JAX 0.4.35  
+- 🤖 **ROS 2**: Humble Hawksbill (CycloneDDS)
+
+
 ## Packages & Launch Files
 | Package          | File                                   | Description                                                    |
 |------------------|----------------------------------------|----------------------------------------------------------------|
@@ -30,6 +41,7 @@ This repository implements:
 | `feat_processing`| `feat_processing/feat_processing.launch.py`| Run the trained feature encoder online.                        |
 
 
+  
 ## Training Data Layout
 
 | Type                          | Path                                                                                                      | Notes                                                                 |
@@ -49,4 +61,16 @@ Edit the environment curriculum list in your training script:
 Each entry corresponds to one environment (task) in the continual learning sequence.
 Order reflects the training curriculum (earlier to later tasks).
 
+## Feature → Elevation Mapping Integration
 
+The `feat_processing` node publishes a **multi-dimensional terrain feature vector**, which is consumed by the **elevation mapping** node.
+
+- **Upstream (features):** this repo → `feat_processing`  
+- **Downstream (fusion/mapping):** [`leggedrobotics/elevation_mapping_cupy`](https://github.com/leggedrobotics/elevation_mapping_cupy.git)  
+
+** ROS 2 Elevation Mapping Version **
+
+For ROS 2 usage in this project, we rely on the following fork:
+👉 [amilearning/elevation_mapping_cupy_ros2](https://github.com/amilearning/elevation_mapping_cupy_ros2.git)
+
+---
