@@ -1,4 +1,4 @@
-# Continual-Traversability-Learning
+# Continual Learning for Traversability Prediction with Uncertainty-Aware Adaptation
 <p align="center">
   <img src="https://github.com/user-attachments/assets/19b7bb4d-8421-4834-a76e-d6a4b97a6918" alt="fig1" width="600">
 </p>
