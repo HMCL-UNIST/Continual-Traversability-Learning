@@ -47,7 +47,7 @@ This repository implements:
 | Type                          | Path                                                                                                      | Notes                                                                 |
 |-------------------------------|-----------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
 | Traversability model training | `/home/user/align_ws/install/align_planner/share/align_planner/`<br>`<env_data_folder>/<sub_envs_data_folder>/`<br>`grid_state_data_<timestamp>.pt` | - `<env_data_folder>` = environment name (e.g., `park`)<br>- `<sub_envs_data_folder>` = session ID<br>- `grid_state_data_<  >.pt` = training data |
-| Feature encoder training data | `/home/user/align_ws/install/feat_processing/share/feat_processing/envs/`<br>`<env_datafolder>/buffer_<timestamp>.pt` | - `<env_datafolder>` = environment name<br>- `buffer_<timestamp>.pt` = raw feature buffer for encoder training |
+| Feature encoder training data | `/home/user/align_ws/install/feat_processing/share/feat_processing/data/`<br>`<env_datafolder>/buffer_<timestamp>.pt` | - `<env_datafolder>` = environment name<br>- `buffer_<timestamp>.pt` = raw feature buffer for encoder training |
 
 
 
