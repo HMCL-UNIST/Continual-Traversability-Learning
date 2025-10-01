@@ -1,0 +1,90 @@
+align_planner_node:
+  ros__parameters:
+    cmd_pub_enble: True
+    debug: False
+    ctrl_loop_rate: 10
+    opt_loop_rate: 10
+    grid_call_rate: 2
+    odom_topic: '/dlio/odom_node/odom'
+    cmd_topic: '/mppi/cmd_vel'
+    Cost_config:
+      goal_w: 1.0 ## weight on the terminal goal cost
+      speed_w: 0.0 ## weight with which target speed will be tracked           
+      mean_slip_cost_scale: 0.1
+      uncert_costs_scale: 0.05
+      terminal_dist_costs_scale: 0.1
+      geo_trav_cost_scale: 0.0
+      ctrl_cost_scale: 0.0
+      jit_enable: true
+
+    Dynamics_config:      
+      dt: 0.1            
+      car_length: 0.30      
+      car_width: 0.40
+      jit_enable: false
+
+    Sampling_config:
+      state_dim: 5
+      control_dim: 2
+      noise_0: 1.0
+      noise_1: 0.5
+      scaled_dt: 0.1 
+      temperature: 0.02 
+      max_vel: 0.8
+      min_vel: 0.0
+      max_yaw_rate: 0.5      
+      max_ax: 1.0
+      min_ax: -1.0
+      max_alpha_x: 1.0
+      min_alpha_x: -1.0
+
+    MPPI_config:
+      ROLLOUTS: 2
+      BATCHSIZE: 1024
+      TIMESTEPS: 30 
+      BINS: 1
+      u_per_command: 2  # how many control inputs do we want to use per MPPI optimization loop.
+      jit_enable: true      
+
+    Map_config:
+      map_size: 6.25
+      map_res: 0.25 ## this results in 256 x 256 pixels      
+      map_res_hitl: 0.1
+      elevation_range: 4.0
+      layers: ['is_valid','geo_trav', 'feat_0','feat_1','feat_2']
+
+    Feat_args:
+      world_feat_size: 16  # feat x 4 (four wheels)
+      state_feat_size: 4
+      deviation_size: 2
+      hidden_units: [24, 48, 24]
+      latent_size: 6
+      z_var: 1.0
+      kernel_type: 'rbf'
+      weight: None
+      device: self.device
+      tensorboard: False
+
+    Ensemble_args:
+      num_models: 5
+      num_recall: 20
+      output_size: 2
+      tensorboard: True
+      align_loss_enable: True
+      off_recall_enable: True
+      weight: None
+      model_dir: 'models'
+      # ensemble_weight: 'lwf_e_2_ensemble_20250422_044704.pth'
+      ensemble_weight: 'ensemble_epoch_21.pth'
+      
+
+    Travnn_args:
+      world_feat_size: 16
+      grid_feat_size: 4
+      state_feat_size: 4
+      input_size: 20
+      trav_hidden_units: [16, 32, 32, 16]
+      trav_output_size: 2
+      device: self.device
+      normalizing_constant_dir: 'data'
+      model_dir: 'models'

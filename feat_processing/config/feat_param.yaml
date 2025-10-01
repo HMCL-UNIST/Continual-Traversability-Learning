@@ -1,0 +1,24 @@
+feat_processing:
+  ros__parameters:
+    front_cam_image:
+      channels: ['chair','sofa',"person"]
+      fusion_methods: ['exponential','exponential','exponential']
+      publish_topic: 'feat_image'
+      publish_image_topic: "feat_image_debug"
+      publish_camera_info_topic: 'feat_image_info'
+      publish_fusion_info_topic: 'feat_image_fusion_info'
+      data_type: image
+      
+      feat_image_publish: False
+      semantic_segmentation: False
+      feature_extractor: True
+      segmentation_model: 'NA' # detectron_coco_panoptic_fpn_R_101_3x, lraspp_mobilenet_v3_large
+      show_label_legend: False
+      image_topic: "/front/zed_node/rgb/image_rect_color"
+      camera_info_topic: "/front/zed_node/rgb/camera_info"      
+
+      feature_topic: "semantic_feat"
+      feat_image_topic: "semantic_feat_im"
+      feat_channel_info_topic: "feat_channel_info"
+
+      resize: 0.25
