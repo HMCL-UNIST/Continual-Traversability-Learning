@@ -71,6 +71,6 @@ The `feat_processing` node publishes a **multi-dimensional terrain feature vecto
 ** ROS 2 Elevation Mapping Version **
 
 For ROS 2 usage in this project, we rely on the following fork:
-👉 [amilearning/elevation_mapping_cupy_ros2](https://github.com/amilearning/elevation_mapping_cupy_ros2.git)
+👉 [amilearning/elevation_mapping_cupy_ros2](https://github.com/amilearning/elevation_mapping_cupy_ros2/tree/orin)
 
 ---
